@@ -4,7 +4,7 @@
 
 JVM运行时结构：https://www.cnblogs.com/jhxxb/p/10896386.html
 
-![在这里插入图片描述](https://img-blog.csdnimg.cn/cb35223a9d70497896fd067428496fcb.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_Q1NETiBAamlhbnBpbmd6anU=,size_27,color_FFFFFF,t_70,g_se,x_16#pic_center)
+![在这里插入图片描述](java_runtime.png)
 
 
 # 2. 加载，链接，初始化
