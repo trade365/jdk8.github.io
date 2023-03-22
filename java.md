@@ -773,7 +773,7 @@ https://www.cnblogs.com/yangfeiORfeiyang/p/9694383.html
 
 * ThreadLocalMap的key是ThreadLocal<T>对象的弱引用 // threadLocal对象，线程公用
 * value是T类型对象的强引用。 // 每个线程都有自己的T对象
-  ![在这里插入图片描述](https://img-blog.csdnimg.cn/8721114861cb48619cccb68ccb2b5bee.png)
+  ![在这里插入图片描述](thread_local.png)
 
 ThreadLocal的结构参考上图，当脱离ThreadLocal的作用域后，ThreadLocal的引用为0，虚线为key指向ThreadLocal的弱引用，ThreadLocal将会被回收，存在这样一条强引用：
 `Thread->ThreadLocalMap->Entry->value`
