@@ -224,7 +224,7 @@ GC时，如果对象不可达，没有覆盖finalize方法，且没有执行过f
 
 ### 3.3.1. YOUNG GC
 
-![在这里插入图片描述](https://img-blog.csdnimg.cn/00d7076b463d40938b6a0dc6f796c64f.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_Q1NETiBAamlhbnBpbmd6anU=,size_39,color_FFFFFF,t_70,g_se,x_16#pic_center)
+![在这里插入图片描述](young_region.png)
 
 为了避免线程争用内存，每个线程在YoungGen都有独立的TLAB(Thread Local Allocation Buffer)。对象先在尝试在TLAB分配，如果TLAB分配失败，则会尝试分配到到YoungGen。
 YoungGen有3个区域，Eden和survivor from, survivor to。
