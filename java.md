@@ -238,7 +238,6 @@ young GC后，OldGen收到分配对象的请求，如果OldGen内存满了，STW
 ## 3.4. JVM收集器
 
 收集器组合使用：https://www.cnblogs.com/grey-wolf/p/10222758.html
-![在这里插入图片描述](https://img-blog.csdnimg.cn/8dce0279840545229065c2e6b3af1223.png?x-oss-process=image/watermark,type_ZHJvaWRzYW5zZmFsbGJhY2s,shadow_50,text_Q1NETiBAamlhbnBpbmd6anU=,size_20,color_FFFFFF,t_70,g_se,x_16#pic_center)
 
 ### 3.4.1. Serial收集器
 
@@ -560,7 +559,7 @@ Java线程状态如下图所示。Java线程在Linux中对应pthread(高版本Li
 
 参考：https://zhuanlan.zhihu.com/p/61892830
 
-![在这里插入图片描述](https://img-blog.csdnimg.cn/img_convert/33c6469178e89eb5aa99e2e659c9088d.png#pic_center)
+![在这里插入图片描述](thread_state.png)
 
 
 ## 4.3. 线程同步
