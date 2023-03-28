@@ -16,7 +16,7 @@ Kafka 的发送端发送消息，如果是默认参数什么都不设置，则�
 
 ## 架构
 
-![在这里插入图片描述](https://img-blog.csdnimg.cn/img_convert/e7e8ff28a50291e38cd3343f95bf46cd.png#pic_center)
+![在这里插入图片描述](kafka.png)
 
 
 如上图所示，有2个Broker，4个Partition，每个Partition都是leader-follower结构，follower只负责同步leader的数据，leader故障时选取一个ISR(in-sync replica)作为leader。
