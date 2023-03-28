@@ -22,7 +22,7 @@ MongoDB使用B树索引，MySQL使用B+树索引。
 
 #### B树
 
-![在这里插入图片描述](https://img-blog.csdnimg.cn/img_convert/47af20cfafb34a0a96775356512eced6.png#pic_center)
+![在这里插入图片描述](btree.png)
 
 
 &ensp;一个m阶B树的特点如下：
@@ -35,7 +35,7 @@ MongoDB使用B树索引，MySQL使用B+树索引。
 
 #### B+树
 
-![在这里插入图片描述](https://img-blog.csdnimg.cn/img_convert/466f0c5d9485863f4700e11a156053e6.png#pic_center)
+![在这里插入图片描述](bplustree.png)
 
 
 一个m阶B树的特点如下：
