@@ -261,7 +261,7 @@ master B执行：CLUSTER SETSLOT X NODE B # 设置X为B的slot
 
 下图为迁移过程客户端访问slot X的结果，基于hash slot的寻址方式需要客户端记录slot和master节点的映射关系。如果某个slot不在当前访问的master节点，就会返回MOVE，客户端缓存slot和master节点的信息。迁移时，旧key仍需要在源节点处理，新key需要到新节点处理，所以需要增加ASK状态，表示仅在下次访问新key时，转到新节点，并不更新客户端缓存，如果缓存被更新，旧key也被路由到新节点了，显然是错的。
 
-![在这里插入图片描述](https://img-blog.csdnimg.cn/img_convert/de70bf48906576e0497431514d1f1114.png#pic_center)
+![在这里插入图片描述](redis.png)
 
 ## 3.4 Gossip协议
 
