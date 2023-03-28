@@ -26,7 +26,7 @@
 
 下图为传统的单服结构，这里的单服并非单机，而是对应一组Gate，Game，GameManager组成的进程，每个进程都是单epoll线程。
 
-![在这里插入图片描述](https://img-blog.csdnimg.cn/img_convert/c17486b9d2a0ca16b17b5e9982623ced.png#pic_center)
+![在这里插入图片描述](game1.png)
 
 
 * Gate负责和客户端连接，转发客户端消息到Game进程上，还可以做单服内消息的广播(广播消息到Game进程)，Gate与所有的Game，GameManager建立连接，Gate之间不连接。
@@ -101,7 +101,7 @@ Game服务器通过GameManager发布自己的地址信息：Game服务启动之�
 于是出现了多服结构，如下图所示是一个大厅服，一个中心服，N个战斗服的架构，每个服都是一个单服结构，每个服都有Hostnum作为唯一的ID。
 
 每个服的启动配置中指定了hostnum和服的类型，大厅服和战斗服配置中还指定了中心服的hostnum，这样可以调用到中心服的服务。
-![在这里插入图片描述](https://img-blog.csdnimg.cn/img_convert/c879d9355413a27187c61f2c8bc2d23b.png#pic_center)
+![在这里插入图片描述](game2.png)
 
 
 
@@ -138,4 +138,4 @@ Game服务器通过GameManager发布自己的地址信息：Game服务启动之�
 
 
 **多服登录流程**
-![在这里插入图片描述](https://img-blog.csdnimg.cn/ac1a28ef597a4b81a31c84b1c3dc332a.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L2ppYW5waW5nemp1,size_16,color_FFFFFF,t_70#pic_center)
+![在这里插入图片描述](game3.png)
