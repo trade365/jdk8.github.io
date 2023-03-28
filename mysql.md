@@ -43,7 +43,7 @@ log_tbl表特别大，service是非主键索引：
 
 如下图所示，InnoDB只有一个聚簇索引(主键)，其余均为非聚簇索引(辅助键)。MyISAM均为非聚簇索引。
 
-![在这里插入图片描述](https://img-blog.csdnimg.cn/img_convert/77b15929d4fadb248e6fbc1755dcd20b.png#pic_center)
+![在这里插入图片描述](cluster_index.png)
 
 
 
