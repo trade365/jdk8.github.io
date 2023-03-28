@@ -1,7 +1,7 @@
 # Hbase
 
 ## 架构
-![在这里插入图片描述](https://img-blog.csdnimg.cn/img_convert/0e6f3503f3ab911b937d8d5b4eaea942.webp?x-oss-process=image/format,png#pic_center)
+![在这里插入图片描述](hbase.png)
 
 
 HReginServer负责数据存储
