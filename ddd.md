@@ -1,7 +1,7 @@
 
 ##  六边形架构
 
-![在这里插入图片描述](https://img-blog.csdnimg.cn/img_convert/626c3e48334d81d0100eaa75a7dd1bf5.png#pic_center)
+![在这里插入图片描述](ddd1.png)
 
 
 六边形架构又称端口-适配器，六边形内部是业务逻辑，通过端口API和外部通信。 外部可以是外部应用，基础设施等。 一个端口对应多个外部系统，不同的外部系统需要不同的适配器，适配器负责对协议进行转换。
@@ -30,4 +30,4 @@ https://tech.meituan.com/2017/12/22/ddd-in-practice.html
 
 
 ## DDD实践-服务脚手架
-![在这里插入图片描述](https://img-blog.csdnimg.cn/img_convert/1822b7775a665a3bfd7f3405520be066.png#pic_center)
+![在这里插入图片描述](ddd2.png)
