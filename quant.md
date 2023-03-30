@@ -1,7 +1,7 @@
 如何开发出一套选股模型，能够替代人工，选出能够跑赢大盘的股票组合。
 
 下图是自己对量化的总结，包括回测和实盘两部分。
-![在这里插入图片描述](https://img-blog.csdnimg.cn/de777599f14a47e2803240e5074c1419.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L2ppYW5waW5nemp1,size_16,color_FFFFFF,t_70#pic_center)
+![在这里插入图片描述](quant.png)
 
 
 实盘的目标不是跑出多好的结果，而是尽可能和回测的结果保持一致，如果存在较大的偏差，则需要弄清楚原因，列举一些原因：
