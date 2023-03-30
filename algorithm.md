@@ -39,7 +39,7 @@
 * tensorflow模型服务
 
 
-![在这里插入图片描述](https://img-blog.csdnimg.cn/4fd8edd2b0844e70843a7c0e9c2974d0.png?x-oss-process=image/watermark,type_ZHJvaWRzYW5zZmFsbGJhY2s,shadow_50,text_Q1NETiBAamlhbnBpbmd6anU=,size_20,color_FFFFFF,t_70,g_se,x_16#pic_center)
+![在这里插入图片描述](algo.PNG)
 
 
 ## 打分服务
