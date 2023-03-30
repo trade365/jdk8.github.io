@@ -13,7 +13,7 @@ IOT平台
 
 ## 结构
 网关和设备通过局域网协议进行通信，网关和IOT平台通过MQTT协议进行通信。只需要配置网关的网络，不需要配置设备的网络。
-![在这里插入图片描述](https://img-blog.csdnimg.cn/a92bebfd1e90412b92e3de014866074e.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L2ppYW5waW5nemp1,size_16,color_FFFFFF,t_70#pic_center)
+![在这里插入图片描述](iot1.png)
 腾讯云IOT平台相关概念：
 * 腾讯云账号：IOT平台管理账号
 * IOT实例：管理项目和应用
@@ -26,9 +26,9 @@ IOT平台
 
 ## 网关配网
 腾讯云提供了若干种配置网关网络的方法，下面是通过softAP方式对网关进行配网的流程：
-![在这里插入图片描述](https://img-blog.csdnimg.cn/50cd1be753474aa08d45ffb407a08cb2.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L2ppYW5waW5nemp1,size_16,color_FFFFFF,t_70#pic_center)
+![在这里插入图片描述](iot2.png)
 
-![在这里插入图片描述](https://img-blog.csdnimg.cn/e633f66ad130447d8dc4bff730c5d1cc.png?x-oss-process=image/watermark,type_ZHJvaWRzYW5zZmFsbGJhY2s,shadow_50,text_Q1NETiBAamlhbnBpbmd6anU=,size_20,color_FFFFFF,t_70,g_se,x_16#pic_center)
+![在这里插入图片描述](iot3.png)
 
 ## 子设备添加到网关
 子设备添加到网关需要设备商提供相关的功能，涉及到了网关和子设备局域网的通信。步骤如下：
@@ -44,7 +44,7 @@ IOT平台
 * ABM：Apple Business Manager，苹果提供的，在这里可以管理苹果设备
 * APNS：Apple Push Notification service，苹果推送服务，用于和苹果设备直接通信
 * 设备：如IPad，MacBook
-![在这里插入图片描述](https://img-blog.csdnimg.cn/afb6f2d8b8a84232ad585c5b747d92d9.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L2ppYW5waW5nemp1,size_16,color_FFFFFF,t_70#pic_center)
+![在这里插入图片描述](iot4.png)
 
 如上图所示，MDM server需要APNS和ABM的鉴权，需要配置相关的证书，流程比较长，参照micromdm的文档配置鉴权：
 https://github.com/micromdm/micromdm/blob/main/docs/user-guide/quickstart.md
