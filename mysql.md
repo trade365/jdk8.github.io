@@ -14,6 +14,9 @@
 * unique：每个表可以有多个unique约束，但是只能有一个primary key约束。被unique和primary key的字段都会作为mysql索引
 * union: https://www.w3school.com.cn/sql/sql_union.asp
 * in和exists的区别：[in适合从表小，exists适合主表小](https://blog.csdn.net/weixin_41979002/article/details/118730611)
+* truncate table 命令将快速删除数据表中的所有记录，但保留数据表结构，truncate 命令删除的数据是不可以恢复的
+* delete 命令删除的数据将存储在系统回滚段中，需要的时候，数据可以回滚恢复
+
 
 # 3. 分页
 
