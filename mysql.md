@@ -17,6 +17,13 @@
 * truncate table 命令将快速删除数据表中的所有记录，但保留数据表结构，truncate 命令删除的数据是不可以恢复的
 * delete 命令删除的数据将存储在系统回滚段中，需要的时候，数据可以回滚恢复
 
+**with用法**
+```java
+with tmp1 as (select * from user1),
+     tmp2 as (select * from user2)
+select * from tmp1, tmp2;
+```
+
 
 # 3. 分页
 
