@@ -348,7 +348,7 @@ onRefresh();
 registerListeners();
 
 // 初始化bean->注入bean->bean后处理->init方法
-// 代理何时被初始化？？
+// 代理（AOP）在此被初始化：AbstractAutoProxyCreator.createProxy->ProxyFactory.getProxy->CglibAopProxy.getProxy
 finishBeanFactoryInitialization(beanFactory);
 
 // 发布事件
