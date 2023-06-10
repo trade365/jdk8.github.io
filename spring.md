@@ -140,6 +140,8 @@ end
 ```
 使用动态代理的例子：MYBATIS
 
+Mybatis
+
 ### CGLIB动态代理
 
 实现MethodInterceptor接口，对被代理方法进行加工。用被代理类和实现MethodInterceptor接口的类对象构造Enhancer对象，用该对象创建被代理对象。GCLIB原理是生成被代理类的子类，来增强被代理类。举例如下：
