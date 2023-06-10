@@ -138,6 +138,7 @@ student walk
 end
 */
 ```
+使用动态代理的例子：MYBATIS
 
 ### CGLIB动态代理
 
@@ -367,6 +368,4 @@ FactoryBean的应用：
 ProxyFactoryBean：https://blog.csdn.net/c5113620/article/details/83578114。
 修饰了被代理对象
 getBean("xxxService")返回的其实是ProxyFactoryBean的getObject方法。返回的是代理对象。
-
-# Mybatis问题
 
