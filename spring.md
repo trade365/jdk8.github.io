@@ -31,6 +31,7 @@ InterfaceX interfaceX;
 6. Configuration和Bean：
 
 Configuration注释在类上，表示这个类的方法(用Bean注释)返回的对象可以作为Spring的bean。使用方法如下：
+
 ```java
 public class MyBean {
     public void destroy() {
@@ -138,9 +139,10 @@ student walk
 end
 */
 ```
-使用动态代理的例子：MYBATIS
 
-Mybatis
+**使用动态代理的例子**：Mybatis
+
+Mybatis中的MapperProxy实现了InvocationHandler，每个Mybatis的接口均会生成对应的MapperProxy，再用这个MapperProxy生成Proxy对象，再调用Proxy对象的insert、update等方法。最终调用到MapperProxy的invoke方法。
 
 ### CGLIB动态代理
 
@@ -168,6 +170,10 @@ before walk
 student walk
 */
 ```
+
+**使用CGLIB代理的例子**：spring的CglibAopProxy
+
+CglibAopProxy中的DynamicAdvisedInterceptor类实现了MethodInterceptor，每个被Spring AOP关联的对象，都会被生成它的代理类，每个执行切面的方法会生成对应的DynamicAdvisedInterceptor
 
 ### Spring AOP
 
@@ -319,7 +325,6 @@ SpringBootApplication是EnableAutoConfiguration，SpringBootConfiguration，和C
 run方法会执行SpringApplication的run方法（非静态）：
 
 ```java
-
 // Allows post-processing of the bean factory in context subclasses.
 postProcessBeanFactory(beanFactory);
 
@@ -359,15 +364,16 @@ BeanPostProcessor可以在Bean执行init方法或者destroy方法之前执行一
 
 
 # 为什么要写spring.factories
+
 https://blog.csdn.net/SkyeBeFreeman/article/details/96291283
 ComponentScan只能扫自己的包的bean
 需要EnableAutoConfiguration注解，以及引入包添加spring.factories文件指明需要注入的Bean。
 
 
 # BeanFactory和FactoryBean什么区别
+
 https://cloud.tencent.com/developer/article/1457284
 FactoryBean的应用：
 ProxyFactoryBean：https://blog.csdn.net/c5113620/article/details/83578114。
 修饰了被代理对象
 getBean("xxxService")返回的其实是ProxyFactoryBean的getObject方法。返回的是代理对象。
-
