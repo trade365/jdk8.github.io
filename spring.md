@@ -125,6 +125,7 @@ class PersonInvocationHandler implements InvocationHandler {
 
 // 调用
 Person person = new Student();
+// 这里也可以不传Student实例
 PersonInvocationHandler personInvocationHandler = new PersonInvocationHandler(person);
 Person personProxy = (Person) Proxy.newProxyInstance(Person.class.getClassLoader(),
                 person.getClass().getInterfaces(), personInvocationHandler);
