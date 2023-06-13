@@ -173,7 +173,7 @@ student walk
 
 **使用CGLIB代理的例子**：spring的CglibAopProxy
 
-每个被Spring AOP关联的对象，都会被生成它的代理类。
+每个被Spring AOP关联的对象，都会被生成它的代理类，在某些情况下，是通过CGLIB来生成代理类的，CglibAopProxy.DynamicAdvisedInterceptor实现了MethodInterceptor，在intercept方法里，通过责任链模式最终调用到切面的逻辑，比如：ExposeInvocationInterceptor(interceptor)->AspectJAfterAdvice(aspectj)
 
 ### Spring AOP
 
