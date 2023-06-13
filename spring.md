@@ -95,7 +95,7 @@ public class AppConfig {
 
 ### JDK动态代理
 
-根据原始对象生成一个invocationHandler，对原始对象的方法进行加工，再根据这个invocationHandler生成一个proxy对象，调用proxy对象的方法就会调用invocationHandler的invoke方法，代码如下：
+实现一个invocationHandler，对接口中的方法进行增强，再根据这个invocationHandler和接口class生成一个proxy对象，调用proxy对象的方法就会调用invocationHandler的invoke方法，代码如下：
 
 ```java
 interface Person {
