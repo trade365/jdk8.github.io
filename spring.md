@@ -372,8 +372,11 @@ ComponentScan只能扫自己的包的bean
 
 # BeanFactory和FactoryBean什么区别
 
+* BeanFactory是Bean的工厂，用来管理Bean，提供诸如getBean的接口
+* FactoryBean是一类特殊的Bean，通过BeanFactory.getBean接口获取的Bean，其实是FactoryBean的getObject接口返回的对象。
+
 https://cloud.tencent.com/developer/article/1457284
+
 FactoryBean的应用：
 ProxyFactoryBean：https://blog.csdn.net/c5113620/article/details/83578114。
-修饰了被代理对象
-getBean("xxxService")返回的其实是ProxyFactoryBean的getObject方法。返回的是代理对象。
+
