@@ -1,6 +1,6 @@
-# 分享学习和工作心得
+# 学习和工作心得
 
-## 工程师基础
+## 基础
 1. [java](https://jdk8.github.io/java)
 2. [mysql](https://jdk8.github.io/mysql)
 3. [redis](https://jdk8.github.io/redis)
@@ -17,7 +17,6 @@
 4. [物联网开发](https://jdk8.github.io/iot)
 
 ## 业余研究
-2. [量化工程](https://jdk8.github.io/quant)
-2. [用估值法优化指数投资](https://jdk8.github.io/index_posi)
-3. [期权基础知识学习](https://jdk8.github.io/option)
-4. [期货期权结算交割](https://jdk8.github.io/clear.svg)
+1. [量化工程](https://jdk8.github.io/quant)
+2. [期权基础知识学习](https://jdk8.github.io/option)
+3. [期货期权结算交割](https://jdk8.github.io/clear.svg)
