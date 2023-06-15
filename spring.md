@@ -213,6 +213,20 @@ public class LogAdvice {
         System.out.println("proceedingJoinPoint args=" + proceedingJoinPoint.getArgs()[0]);
         proceedingJoinPoint.proceed();
     }
+    
+    @Around("execution(* com.xxx.ClassName.methodName(..))")
+    public void around1(ProceedingJoinPoint proceedingJoinPoint) throws Throwable {
+    }
+    
+    // 定义一个切面
+    @PointCut("execution(* com.xxx.ClassName.methodName(..))")
+    public void pc() {
+    }
+    
+    // 使用切面
+    @Around("pc()")
+    public void around2(ProceedingJoinPoint proceedingJoinPoint) throws Throwable {
+    }
 }
 
 // 增强被Log注释的方法
@@ -377,6 +391,8 @@ ComponentScan只能扫自己的包的bean
 
 https://cloud.tencent.com/developer/article/1457284
 
-FactoryBean的应用：
-ProxyFactoryBean：https://blog.csdn.net/c5113620/article/details/83578114。
+**举例**
 
+如果UserService这个Bean实现了FactoryBean这个接口，`BeanFactory.getBean("userService")`返回的对象是FactoryBean.getObject返回的值，如果FactoryBean配置的是单例模式，则每次调用getObject返回的对象是相同的，反之，则是不同的。如果就想获取到UserService这个Bean，则可以通过这种方式：`BeanFactory.getBean("&userService")`
+
+FactoryBean的应用：AOP ProxyFactoryBean(手动实现AOP)
