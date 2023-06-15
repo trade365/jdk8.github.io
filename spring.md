@@ -380,8 +380,13 @@ BeanPostProcessor可以在Bean执行init方法或者destroy方法之前执行一
 # 为什么要写spring.factories
 
 https://blog.csdn.net/SkyeBeFreeman/article/details/96291283
-ComponentScan只能扫自己的包的bean
-需要EnableAutoConfiguration注解，以及引入包添加spring.factories文件指明需要注入的Bean。
+SpringBootApplication注解包含了ComponentScan注解，默认扫描与SpringBootApplication注解类同包下的bean。也可以通过参数指定扫描特定包下的bean。
+
+如果要将外部的包中bean注入到Spring容器中，需要EnableAutoConfiguration注解（被SpringBootApplication注解包含），以及引入包添加spring.factories文件指明需要注入的Bean。举例：
+
+```shell
+org.springframework.boot.autoconfigure.EnableAutoConfiguration(注解）=org.mybatis.spring.boot.autoconfigure.MybatisAutoConfiguration
+```
 
 
 # BeanFactory和FactoryBean什么区别
