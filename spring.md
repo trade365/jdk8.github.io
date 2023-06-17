@@ -2,13 +2,19 @@
 
 ## 常用注解
 
-1. Profile：被Profile注释的Component只有当注释的值(value)与spring.profiles.active的值相同时才会生效。
+**Profile**
 
-2. ActiveProfiles：注释在Spring Boot单测类上，如：@ActiveProfiles("test")。
+被Profile注释的Component只有当注释的值(value)与spring.profiles.active的值相同时才会生效。
 
-3. RunWith(SpringRunner.class)+SpringBootTest：注释在Spring Boot单测类上，等同于启动了Spring Boot应用。
+**ActiveProfiles**
 
-4. Autowired，Component和Qualifier(表明哪个bean是需要注入的)：
+注释在Spring Boot单测类上，如：@ActiveProfiles("test")。
+
+**RunWith(SpringRunner.class)+SpringBootTest**
+
+注释在Spring Boot单测类上，等同于启动了Spring Boot应用。
+
+**Autowired，Qualifier和Resource**
 
 Autowired只能按照type方式注入，按照如下方式注入接口的实现类。
 
@@ -26,9 +32,13 @@ class ImplB implements InterfaceX {
 InterfaceX interfaceX;
 ```
 
-5. Before，After，Test：Test是注释在测试方法上，每个测试方法执行之前执行Before方法，执行之后执行After方法。
+Resource注解可以执行通过name和type进行装配，Autowired注解只能通过type进行装配，可以配合Qualifier注解通过name进行装配。参考：https://www.cnblogs.com/think-in-java/p/5474740.html、https://blog.csdn.net/Weixiaohuai/article/details/120853683
 
-6. Configuration和Bean：
+Before，After，Test**
+
+Test是注释在测试方法上，每个测试方法执行之前执行Before方法，执行之后执行After方法。
+
+**Configuration和Bean**
 
 Configuration注释在类上，表示这个类的方法(用Bean注释)返回的对象可以作为Spring的bean。使用方法如下：
 
@@ -48,11 +58,23 @@ public class MyBean {
 }
 
 @Configuration
+@ConfigurationProperties(prefix="xxx")
 class AppConfig {
+    
+    @Bean
+    public int para() {
+        return 1;
+    }
+    
+    @Bean
+    public AnotherBean ab() {
+        return new AnotherBean();
+    }
 
     // initMethod表示init方法将在MyBean构造函数之后执行
     @Bean(initMethod = "init")
-    public MyBean myBean() {
+    // 在Bean注释的方法中的参数，按照入参的名称去找对应的bean
+    public MyBean myBean(int para, AnotherBean ab) {
         return new MyBean();
     }
 }
@@ -85,11 +107,23 @@ public class AppConfig {
 
 用Component会构造两个MyBean对象，用Configuration会构造一个MyBean对象。
 
-7. ComponentScan
+**ComponentScan**
 
 和Configuration注解一起使用，替代spring xml配置中的component-scan标签，指定spring扫描component路径。
 
-8. Resource注解，和Autowired注解的区别：https://www.cnblogs.com/think-in-java/p/5474740.html
+**基于配置初始化属性**
+
+通过ConfigurationProperties、 EnableConfigurationProperties和ConfigurationPropertiesScan给Bean基于配置自动注入属性：https://blog.csdn.net/niugang0920/article/details/115354613
+
+**基于条件构建Bean**
+
+ConditionalOnBean：当给定的在bean存在时,则实例化当前Bean
+
+ConditionalOnMissingBean：当给定的在bean不存在时,则实例化当前Bean
+
+ConditionalOnClass：当给定的类名在类路径上存在，则实例化当前Bean
+
+ConditionalOnMissingClass：当给定的类名在类路径上不存在，则实例化当前Bean
 
 ## AOP
 
