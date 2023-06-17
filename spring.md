@@ -34,7 +34,7 @@ InterfaceX interfaceX;
 
 Resource注解可以执行通过name和type进行装配，Autowired注解只能通过type进行装配，可以配合Qualifier注解通过name进行装配。参考：https://www.cnblogs.com/think-in-java/p/5474740.html、https://blog.csdn.net/Weixiaohuai/article/details/120853683
 
-Before，After，Test**
+**Before，After，Test**
 
 Test是注释在测试方法上，每个测试方法执行之前执行Before方法，执行之后执行After方法。
 
