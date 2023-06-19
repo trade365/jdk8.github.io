@@ -355,7 +355,7 @@ getProxy方法返回代理对象。
 * JdkDynamicAopProxy：JDK动态代理，通过JDK的InvocationHandler实现了AOP
 * CglibAopProxy：通过CGLIB动态代理实现AOP
 
-## SpringBoot
+# SpringBoot
 
 SpringBoot的启动代码：
 
@@ -406,6 +406,29 @@ finishRefresh();
 // 调用runner
 afterRefresh(context, applicationArguments);
 ```
+
+## Springboot事件监听
+
+监听Springboot应用事件
+
+```java
+public static class ApplicationContextEventListener implements ApplicationListener<ApplicationContextEvent> {   
+  public void onApplicationEvent(ApplicationContextEvent event) {    
+  }
+}
+```
+
+通过下面的方法注册到Spring中：
+
+```java
+SpringApplication application = new SpringApplication(XXXSpringBootApplication.class);
+application.addListeners(new ApplicationContextEventListener());
+```
+
+事件类型：
+
+* ApplicationFailedEvent：应用失败事件
+* ApplicationEvent
 
 **BeanPostProcessor**
 
