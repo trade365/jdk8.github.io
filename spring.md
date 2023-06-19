@@ -378,6 +378,7 @@ postProcessBeanFactory(beanFactory);
 
 // 根据ComponentScan或ImportResource注解找到basePackage，
 // classloader.getReources()找到目录，扫描目录的bean
+// 执行自动装配
 invokeBeanFactoryPostProcessors(beanFactory);
 
 // 找到BeanPostProcessors，比如自定义注解处理器等
@@ -410,20 +411,28 @@ afterRefresh(context, applicationArguments);
 
 BeanPostProcessor可以在Bean执行init方法或者destroy方法之前执行一些自定义的动作，比如给Bean的某些属性依据自定义的注解注入对象。
 
+## Springboot自动装配原理
 
-# 为什么要写spring.factories
+SpringBootApplication注解包含了ComponentScan注解，默认扫描与SpringBootApplication注解类同包下的bean。也可以自动装配其他jar包中指定的bean，按照约定大于配置的原则，其他jar包按照约定，将需要装配bean的配置放到spring.factories文件中，springboot就会自动装配这些bean。
 
-https://blog.csdn.net/SkyeBeFreeman/article/details/96291283
-SpringBootApplication注解包含了ComponentScan注解，默认扫描与SpringBootApplication注解类同包下的bean。也可以通过参数指定扫描特定包下的bean。
+springboot是通过EnableAutoConfiguration（被SpringBootApplication注解包含）这个注解进行自动装配的。
 
-如果要将外部的包中bean注入到Spring容器中，需要EnableAutoConfiguration注解（被SpringBootApplication注解包含），以及引入包添加spring.factories文件指明需要注入的Bean。举例：
+```java
+@Import(EnableAutoConfigurationImportSelector.class->AutoConfigurationImportSelector.class->ImportSelector.class)
+public @interface EnableAutoConfiguration {
+```
 
-```shell
+ImportSelector接口配合Import注解使用，其中的`selectImports`接口根据配置返回需要加载的类。
+
+AutoConfigurationImportSelector的selectImports方法会调用`SpringFactoriesLoader.loadFactoryNames`方法，遍历加载的jar包中META-INF中的spring.factories的`org.springframework.boot.autoconfigure.EnableAutoConfiguration`key值。将其对应的Configuration中配置的bean注入到容器中。
+
+举例：
+
+```java
 org.springframework.boot.autoconfigure.EnableAutoConfiguration(注解）=org.mybatis.spring.boot.autoconfigure.MybatisAutoConfiguration
 ```
 
-
-# BeanFactory和FactoryBean什么区别
+## BeanFactory和FactoryBean什么区别
 
 * BeanFactory是Bean的工厂，用来管理Bean，提供诸如getBean的接口
 * FactoryBean是一类特殊的Bean，通过BeanFactory.getBean接口获取的Bean，其实是FactoryBean的getObject接口返回的对象。
