@@ -740,20 +740,22 @@ List是非线程安全的，Vector是线程安全的。
 
 在使用迭代器对一般的集合进行遍历时，是不允许修改集合的。CopyOnWriteArrayList允许一边修改List，一边对List进行迭代。它的原理是写时(on write)，拷贝(copy)一份原有List，在此拷贝的List上做修改，修改完毕后将新List地址覆盖到老的List地址，保证遍历不会出错。
 
-HashMap为什么线程不安全：
+**HashMap和ConcurrentHashMap**：
 
-Java7链表采用的是头插法，在resize时会出现环链表，或者数据丢失的情况。Java8采用的是尾插法，再resize时还是会出现数据丢失的情况(当前数组没有节点，并发插入)。
+1）**HashMap**：Java7链表采用的是头插法，在resize时会出现环链表，或者数据丢失的情况。Java8采用的是尾插法，再resize时还是会出现数据丢失的情况(当前数组没有节点，并发插入)。
 
-Java7的ConcurrentHash采用的是分段加锁，粒度较粗，Java8采用的是CAS+syncronized，扩大粒度(粒度为数组的每个Node)，减小争用：
+并发场景下`HashMap.put(key1,  value1)`，如果`HashMap.containsKey(key1)`返回的是true，`HashMap.get(key1)`的value不一定准备好，也就是说可能返回null，因为put不能保值原子性，HashMap中的节点Node(key,value,next)的构造，添加到HashMap不一定保证原子性，如果按照这样的顺序：Node对象的地址先返回->key被赋值->containsKey返回true->get得到的value还没被赋值
+
+2）Java7的ConcurrentHash采用的是分段加锁，粒度较粗，Java8采用的是CAS+syncronized，扩大粒度(粒度为数组的每个Node)，减小争用：
 
 * 当前节点为空，则CAS插入数据，不成功则自旋直至成功。
 * 当前节点hashcode==MOVED，则需要扩容
 * 否则synchronized写入数据
 * 如果节点数超过一定数量，则需要转化为红黑树。
 
-HashMap key和value都可以为null，ConcurrentHashMap key和value都不能为null。
+3）HashMap key和value都可以为null，ConcurrentHashMap key和value都不能为null。所以在HashMap中，判断一个key是否存在，需要用containsKey方法，而不要用`get(key)!=null`判断。
 
-HashMap数组为2的次幂的原因：
+4）HashMap数组为2的次幂的原因：
 
 * 分布均匀，计算index的方式为val&(length-1)
 * 扩容时，计算index更快，只需要判断val在新增的那个位(x)是否为1，如果为1，直接将2^x加上之前的index。否则不需要变。
@@ -1066,4 +1068,3 @@ public static void main(String[] args) {
     person1.display(person);
 }
 ```
-
