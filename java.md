@@ -744,7 +744,7 @@ List是非线程安全的，Vector是线程安全的。
 
 1）**HashMap**：Java7链表采用的是头插法，在resize时会出现环链表，或者数据丢失的情况。Java8采用的是尾插法，再resize时还是会出现数据丢失的情况(当前数组没有节点，并发插入)。
 
-并发场景下`HashMap.put(key1,  value1)`，如果`HashMap.containsKey(key1)`返回的是true，`HashMap.get(key1)`的value不一定准备好，也就是说可能返回null，因为put不能保值原子性，HashMap中的节点Node(key,value,next)的构造，添加到HashMap不一定保证原子性，如果按照这样的顺序：Node对象的地址先返回->key被赋值->containsKey返回true->get得到的value还没被赋值
+并发场景下`HashMap.put(key1,  value1)`，如果`HashMap.containsKey(key1)`返回的是true，`HashMap.get(key1)`的value不一定准备好，也就是说可能返回null，因为put不能保值原子性，HashMap中的节点Node(key,value,next)的构造，添加到HashMap不一定保证原子性，如果按照这样的顺序：Node对象的地址先返回->key被赋值->containsKey返回true->get得到的value还没被赋值（**指令重排**）
 
 2）Java7的ConcurrentHash采用的是分段加锁，粒度较粗，Java8采用的是CAS+syncronized，扩大粒度(粒度为数组的每个Node)，减小争用：
 
