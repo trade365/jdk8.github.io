@@ -18,6 +18,7 @@
 * delete 命令删除的数据将存储在系统回滚段中，需要的时候，数据可以回滚恢复
 
 **WITH AS**
+
 ```java
 WITH TMP1 AS (SELECT * FROM USER1),
      TMP2 AS (SELECT * FROM USER2)
@@ -80,6 +81,23 @@ explain select nickname, uid from test_user where uid = 2;
 
 至少是range级别：https://www.modb.pro/db/25959
 
+SQL绑定变量：
+
+在使用编程语言如JAVA对数据库进行查询时，SQL有两种写法，第一种写法是：
+
+```sql
+select * from user_tbl where name = 'a';
+select * from user_tbl where name = 'b';
+select * from user_tbl where name = 'c';
+```
+
+第二种写法是：
+
+```sql
+select * from user_tbl where name = ?
+```
+
+通过PreparedStatement进行预编译SQL，这种写法也称绑定变量，这种写法的好处是SQL解析只用了一次，即编译一次（编译好的结果存在数据库中），提升效率。
 
 # 5. 锁
 
@@ -126,11 +144,14 @@ InnoDB行锁有三种算法：
 
 * 如果id有``10, 12, 29``，则RR级别下，next key lock的锁区间是：(负无穷,10],(11, 12],(12,29],(29,正无穷)，事务1会锁住(12,29],(29,正无穷)区间，事务2的insert会被block住，于是避免了幻读。
 * 如果事务1为``select * from tbl where id=13 for update``，则[12,29)会被锁住。
+
 ## 5.4 乐观锁
+
 乐观锁通过非阻塞的方式实现对共享资源的访问。
 只支付一次：
 ``update order_tbl set pay_status=1 where id=1 and pay_status=0;``
 可以用乐观锁实现对业务的加锁。
+
 ```
 res = update lock_tbl set is_lock=true where is_lock=false and lock_id=xxx;
 if (res == 0)
