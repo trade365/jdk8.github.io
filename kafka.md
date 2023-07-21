@@ -48,7 +48,7 @@ leader的HW决定了消费者可以消费到的数据，跟不上leader速度(�
 
 如下图所示，每个partition都是一个有序的不可变的记录序列，每个消息都会保留在磁盘一定的时间，在保留时间内，消费者都会消费到，超过保留时间，消息将会从磁盘删除。
 
-![在这里插入图片描述](https://img-blog.csdnimg.cn/img_convert/b6d33e41c6461bcf0f7e3cfd611c6e68.png#pic_center)
+![在这里插入图片描述](kafka2.png)
 
 
 ## 高吞吐
