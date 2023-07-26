@@ -1,5 +1,9 @@
 # Spring
 
+## Spring事务
+
+事务传播机制：https://segmentfault.com/a/1190000020386113
+
 ## 常用注解
 
 **Profile**
