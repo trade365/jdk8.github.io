@@ -303,7 +303,11 @@ G1通过Remembered Sets维护区域之间的引用。每个区域都有一个Rem
 
 G1适合4G以上的内存，目标是暂停MaxGCPauseMillis(200ms)时间。
 
+## 3.5. JVM命令
 
+**jstat -gcutil 进程ID**：查看进程的GC情况，比如发生过几次youngGC，几次fullGC，GC的时间等信息。
+
+**jhsdb jmap --heap pid 进程ID**：查看JVM的堆信息。
 
 # 4. 多线程和锁
 
